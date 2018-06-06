@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>My pictures</title>
+	<link rel="stylesheet" type="text/css" href="../css/style.css">
+</head>
+<body bgcolor="plum">
+	<h1>PICTURES</h1>
+	<div class="full-img">
+  		<img class="displayed-img" src="../images/image1.jpg ">
+	</div>
+	<div class="thumb-bar">
+	
+	</div>
+	<script type="text/javascript">
+		var displayedImage = document.querySelector('.displayed-img');
+		var thumbBar = document.querySelector('.thumb-bar');
+		for(var i = 1; i <= 15; i++) 
+		{
+  			var newImage = document.createElement('img');
+  			newImage.setAttribute('src', '../images/image' + i + '.jpg');
+  			thumbBar.appendChild(newImage);
+  			newImage.onclick = function(e) 
+  			{
+    			var imgSrc = e.target.getAttribute('src');
+    			displayImage(imgSrc);
+  			}
+		}
+
+		function displayImage(imgSrc) 
+		{
+  			displayedImage.setAttribute('src', imgSrc);
+		}
+	</script>
+</body>
+</html>
