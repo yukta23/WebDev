@@ -26,19 +26,27 @@ class Queue:
     def __init__(self, maxsize=0):
         self.maxsize = maxsize
         self._init(maxsize)
+        
         # mutex must be held whenever the queue is mutating.  All methods
         # that acquire mutex must release it before returning.  mutex
         # is shared between the three conditions, so acquiring and
         # releasing the conditions also acquires and releases mutex.
+        
         self.mutex = _threading.Lock()
+        
         # Notify not_empty whenever an item is added to the queue; a
         # thread waiting to get is notified then.
+        
         self.not_empty = _threading.Condition(self.mutex)
+        
         # Notify not_full whenever an item is removed from the queue;
         # a thread waiting to put is notified then.
+        
         self.not_full = _threading.Condition(self.mutex)
+        
         # Notify all_tasks_done whenever the number of unfinished tasks
         # drops to zero; thread waiting to join() is notified to resume
+        
         self.all_tasks_done = _threading.Condition(self.mutex)
         self.unfinished_tasks = 0
 
@@ -157,6 +165,8 @@ class Queue:
         Otherwise ('block' is false), return an item if one is immediately
         available, else raise the Empty exception ('timeout' is ignored
         in that case).
+        Achcha Samajgh Gaya!
+        Thank You Mam  ^_^
         """
         self.not_empty.acquire()
         try:
